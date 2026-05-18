@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "author": "Maria Eduarda Pereira de Souza Melo",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-s3-devkitc-1",
+      "id": "esp",
+      "top": -48.18,
+      "left": -43.43,
+      "attrs": { "builder": "esp-idf" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -3.6,
+      "left": -188.2,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 72,
+      "left": -192.55,
+      "rotate": 90,
+      "attrs": { "value": "220" }
+    },
+    { "type": "wokwi-junction", "id": "j1", "top": 72, "left": -110.4, "attrs": {} },
+    { "type": "wokwi-junction", "id": "j2", "top": -62.4, "left": -216, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "esp:17", "j1:J", "green", [ "h-48.05" ] ],
+    [ "j1:J", "esp:18", "green", [ "v9.6" ] ],
+    [ "led1:C", "esp:GND.1", "#8f4814", [ "v153.6", "h0.4" ] ],
+    [ "led1:A", "r1:1", "green", [ "v0" ] ],
+    [ "r1:2", "esp:4", "green", [ "h19.2", "v-97.2" ] ]
+  ],
+  "dependencies": {}
+}
