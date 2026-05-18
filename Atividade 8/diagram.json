@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "author": "Maria Eduarda Pereira de Souza Melo",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-s3-devkitc-1",
+      "id": "esp",
+      "top": 0,
+      "left": 0,
+      "attrs": { "builder": "esp-idf" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 150.2,
+      "left": -153.6,
+      "attrs": { "color": "green", "xray": "1" }
+    },
+    { "type": "wokwi-potentiometer", "id": "pot1", "top": -78.1, "left": -163.4, "attrs": {} },
+    { "type": "wokwi-led", "id": "led1", "top": 54, "left": -159.4, "attrs": { "color": "red" } },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 90.35,
+      "left": -76.8,
+      "attrs": { "value": "220" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "pot1:VCC", "esp:3V3.1", "red", [ "v38.4", "h-0.8" ] ],
+    [ "pot1:SIG", "esp:4", "green", [ "v0" ] ],
+    [ "pot1:GND", "esp:GND.2", "#8f4814", [ "v28.8", "h240", "v-9.6" ] ],
+    [ "btn1:1.r", "esp:9", "green", [ "v0" ] ],
+    [ "btn1:2.r", "esp:GND.1", "#8f4814", [ "h77", "v57.8" ] ],
+    [ "led1:A", "r1:1", "green", [ "v0" ] ],
+    [ "r1:2", "esp:15", "green", [ "v0" ] ],
+    [ "led1:C", "esp:GND.1", "#8f4814", [ "v0", "h-38", "v144" ] ]
+  ],
+  "dependencies": {}
+}
